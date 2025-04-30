@@ -23,13 +23,30 @@ int main() {
             continue;
         }
 
-        break;
-    }
+        
+            break;  
+        }
+        
+    
 
     int myArr[userInput]; // Use the valid size here
 
     printf("You entered a valid size: %d\n", userInput);
 
+    int size = sizeof(myArr)/sizeof(myArr[0]);  //  to get the size of the Array
+    
+    for(int i = 0 ; i <size ; i++){
+        printf("Write the number for the index %d:\n",i);
+
+        while(scanf("%d",&myArr[i]) != 1){
+            printf("Invalid input, Please enter an integer!\n");
+            while(getchar()!='\n');
+        }
+        printf("\nArray content: ");
+        for (int j = 0; j <= i; j++) {
+            printf("%d ", myArr[j]);
+        }
+    }
     
 
     return 0;
