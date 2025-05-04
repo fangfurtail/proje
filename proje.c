@@ -10,7 +10,7 @@ int main()
 
     printf("How long do you want your array to be (1-20)?\n");
 
-    while (true)
+    while (true)    // A while loop to get a valid number for the array
     {
         int result = scanf("%d", &userInput);
 
@@ -34,13 +34,14 @@ int main()
         break;
     }
 
-    int myArr[userInput]; // Use the valid size here
+    int myArr[userInput]; // Use the valid size here to create the array
 
     printf("You entered a valid size: %d\n", userInput);
 
-    int size = sizeof(myArr) / sizeof(myArr[0]); //  to get the size of the Array
+    int size = userInput;
+    // int size = sizeof(myArr) / sizeof(myArr[0]); //  to get the size of the Array
 
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < size; i++)  // Getting user input to fill the array.
     {
         printf("Write the number for the index %d:\n", i);
 
@@ -54,13 +55,17 @@ int main()
         arrayPrint(myArr,size);
     }
 
+    recursiveSort(myArr,userInput);  
 
-    recursiveSort(myArr,userInput);
     printf("Final Array is : ");
     arrayPrint(myArr,size);
 
     return 0;
 }
+
+
+
+
 
 void recursiveSort(int arr[], int n) {
     if (n == 1) return;
@@ -73,15 +78,17 @@ void recursiveSort(int arr[], int n) {
         }
     }
 
-    // Adım adım yazdır
+    // Printing
     printf("\nStep (n=%d): ", n);
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
     printf("\n");
 
-    recursiveSort(arr, n - 1);
+    recursiveSort(arr, n - 1); // recursive call
 }
+
+
 
 void arrayPrint(int arr[], int size) {
     for (int i = 0; i < size; i++) {
