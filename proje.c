@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+void recursiveSort(int arr[], int index);
+void arrayPrint(int arr[] , int size);
+
 int main()
 {
     int userInput;
@@ -48,11 +51,42 @@ int main()
                 ;
         }
         printf("\nArray content: ");
-        for (int j = 0; j <= i; j++)
-        {
-            printf("%d ", myArr[j]);
-        }
+        arrayPrint(myArr,size);
     }
+
+
+    recursiveSort(myArr,userInput);
+    printf("Final Array is : ");
+    arrayPrint(myArr,size);
 
     return 0;
 }
+
+void recursiveSort(int arr[], int n) {
+    if (n == 1) return;
+
+    for (int i = 0; i < n - 1; i++) {
+        if (arr[i] < arr[i + 1]) {
+            int temp = arr[i];
+            arr[i] = arr[i + 1];
+            arr[i + 1] = temp;
+        }
+    }
+
+    // Adım adım yazdır
+    printf("\nStep (n=%d): ", n);
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    recursiveSort(arr, n - 1);
+}
+
+void arrayPrint(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
